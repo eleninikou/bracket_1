@@ -5,7 +5,7 @@ Gulp starter with browserify,sass,jquery,bootstrap,browser sync
 
 First, clone the repo...
 ```
-git clone https://github.com/thanoseleftherakos/react-todo-notes.git
+git clone https://github.com/thanoseleftherakos/gulp-browserify-starter.git
 ```
 Then install the npm and bower modules <br>
 ```
