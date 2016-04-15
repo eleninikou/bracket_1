@@ -54,6 +54,13 @@ gulp.task("sass", function(){
               .pipe(gulp.dest(config.dest_css))
               .pipe(browserSync.reload({stream:true}));
 });
+// -----------------------------------------------------------------------------
+// Font Awesome
+// -----------------------------------------------------------------------------
+gulp.task('icons', function() { 
+    return gulp.src(config.bowerDir + '/components-font-awesome/fonts/**.*') 
+        .pipe(gulp.dest(config.dest_assets+'/fonts')); 
+});
 
 // -----------------------------------------------------------------------------
 // Fonts
@@ -133,12 +140,12 @@ gulp.task( 'deploy', function () {
 	// turn off buffering in gulp.src for best performance
 
 	return gulp.src( globs, { base: 'dist/', buffer: false } )
-		.pipe( conn.newer( '' ) ) // only upload newer files
-		.pipe( conn.dest( '' ) );
+		.pipe( conn.newer( '/public_html/' ) ) // only upload newer files
+		.pipe( conn.dest( '/public_html/' ) );
 
 } );
 // -----------------------------------------------------------------------------
 //Default
 // -----------------------------------------------------------------------------
-gulp.task('default',['watch','sass','fonts','fileinclude','browserify']);
-// gulp.task('default',['watch']);
+gulp.task('init',['watch','sass','fonts','fileinclude','browserify','icons']);
+gulp.task('default',['watch']);
