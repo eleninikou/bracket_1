@@ -170,5 +170,4 @@ gulp.task( 'deploy', function () {
 // -----------------------------------------------------------------------------
 //Default
 // -----------------------------------------------------------------------------
-gulp.task('init',['watch','sass','fonts','fileinclude','browserify','icons']);
-gulp.task('default',['watch']);
+gulp.task('default',['watch','sass','fonts','fileinclude','browserify','icons']);
