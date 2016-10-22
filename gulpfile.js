@@ -4,9 +4,10 @@ var gulp            = require("gulp"),
     watch           = require("gulp-watch"),
     plumber         = require("gulp-plumber"),
     minify_css      = require("gulp-minify-css"),
+    autoprefixer    = require('gulp-autoprefixer'),
     uglify          = require("gulp-uglify"),
-    prefix          = require("gulp-autoprefixer"),
     sourcemaps      = require("gulp-sourcemaps"),
+    cleanCSS        = require('gulp-clean-css'),
     through         = require("gulp-through"),
     notify          = require("gulp-notify"),
     browserSync     = require("browser-sync"),
@@ -18,7 +19,9 @@ var gulp            = require("gulp"),
     cssImport       = require('gulp-cssimport'),
     fileinclude     = require('gulp-file-include'),
     gutil           = require( 'gulp-util' ),
-    ftp             = require( 'vinyl-ftp' );
+    ftp             = require( 'vinyl-ftp' ),
+    gulpif          = require('gulp-if'),
+    argv            = require('yargs').argv;
 
 // -----------------------------------------------------------------------------
 var config = {
@@ -33,9 +36,11 @@ var config = {
     src_partials: 'src/**/*.html',
     src_sass    : 'src/sass/**/*.scss',
     src_js      : 'src/js/*.js',
-    src_img     : 'src/img/*'
+    src_img     : 'src/images/*'
 }
 
+// gulp build --production
+var production = !!argv.production;
 
 // -----------------------------------------------------------------------------
 // SASS TO CSS
@@ -43,14 +48,28 @@ var config = {
 gulp.task("sass", function(){
   return gulp.src(config.src_sass)
               .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-              .pipe(sass())
+              .pipe(gulpif(!production, sourcemaps.init()))
+              .pipe(sass({
+                sourceComments: !production,
+                outputStyle: production ? 'compressed' : 'nested'
+              }))
               .pipe(cssImport())
-              .pipe(prefix('last 3 versions'))
+              .pipe(gulpif(!production, sourcemaps.write({
+                'includeContent': false,
+                'sourceRoot': '.'
+              })))
+              .pipe(gulpif(!production, sourcemaps.init({
+                  'loadMaps': true
+              })))
+              .pipe(sourcemaps.write({
+                'includeContent': true
+              }))
+              .pipe(autoprefixer({
+                  browsers: ['last 2 versions'],
+                  cascade: false
+              }))
               .pipe(concat('main.min.css'))
-              .pipe(gulp.dest(config.dest_css))
-              .pipe(minify_css())
-              // .pipe(sourcemaps.init())
-              // .pipe(sourcemaps.write())
+              .pipe(gulpif(production, cleanCSS()))
               .pipe(gulp.dest(config.dest_css))
               .pipe(browserSync.reload({stream:true}));
 });
@@ -88,7 +107,7 @@ gulp.task('browserify', function() {
 // Images
 // -----------------------------------------------------------------------------
 gulp.task('images', function() { 
-    return gulp.src(config.src + '/images/**.*') 
+    return gulp.src(config.src_img) 
         .pipe(gulp.dest(config.dest_assets+'/images')); 
 });
 
