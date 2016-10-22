@@ -93,11 +93,15 @@ gulp.task('fonts', function() { 
 // Browserify
 // -----------------------------------------------------------------------------
 gulp.task('browserify', function() {
-  var bundleStream = browserify('src/js/main.js').bundle()
+  var bundleStream = browserify('src/js/main.js',
+    {
+      debug: !production,
+      cache: {}
+    }).bundle()
 
   bundleStream
     .pipe(source('index.js'))
-    .pipe(streamify(uglify()))
+    .pipe(gulpif(production, streamify(uglify())))
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest(config.dest_js))
     .pipe(browserSync.reload({stream:true}));
