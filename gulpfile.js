@@ -18,7 +18,8 @@ var gulp            = require("gulp"),
     cssImport       = require('gulp-cssimport'),
     fileinclude     = require('gulp-file-include'),
     gutil           = require( 'gulp-util' ),
-    ftp             = require( 'vinyl-ftp' );
+    ftp             = require( 'vinyl-ftp' ),
+    ngrok           = require('ngrok');
 
 // -----------------------------------------------------------------------------
 var config = {
@@ -144,8 +145,32 @@ gulp.task( 'deploy', function () {
     .pipe( conn.dest( '/public_html/dev' ) );
 
 } );
+
+
+// -----------------------------------------------------------------------------
+// Ngrok
+// -----------------------------------------------------------------------------
+gulp.task('live', function(){
+  browserSync.init({
+    server: './dist'
+   }, function (err, bs) {
+     ngrok.connect(bs.options.get('port'), function (err, url) {
+        // https://757c1652.ngrok.com -> 127.0.0.1:8080  
+        console.log(url);
+     }); 
+  });
+  gulp.watch(config.src_html, ['fileinclude']);
+  gulp.watch(config.src_partials, ['fileinclude']);
+  gulp.watch(config.src + '/images/**.*', ['images']);
+  gulp.watch(config.src_js, ['browserify']);
+  gulp.watch(config.src_sass, ['sass']);
+  gulp.watch(config.dest_html).on('change',browserSync.reload);
+});
+
+
 // -----------------------------------------------------------------------------
 //Default
 // -----------------------------------------------------------------------------
 gulp.task('init',['watch','sass','fonts','fileinclude','browserify','icons']);
 gulp.task('default',['watch']);
+gulp.task('ngrok',['live']);

@@ -14,5 +14,5 @@ $ bower install
 ```
 <p>Build and run server </p>
 ```
-gulp
+gulp init
 ```
