@@ -19,7 +19,8 @@ var gulp            = require("gulp"),
     fileinclude     = require('gulp-file-include'),
     gutil           = require( 'gulp-util' ),
     ftp             = require( 'vinyl-ftp' ),
-    ngrok           = require('ngrok');
+    ngrok           = require('ngrok'),
+    fs              = require('fs');
 require('dotenv').config()
 
 // -----------------------------------------------------------------------------
@@ -38,6 +39,10 @@ var config = {
     src_img     : 'src/img/*'
 }
 
+
+gulp.task('create_env', function(cb){
+  fs.writeFile('.env', 'FTP_HOST=\nFTP_PASSWORD=\nFTP_USER=\nFTP_LOCATION=', cb);
+});
 
 // -----------------------------------------------------------------------------
 // SASS TO CSS
@@ -172,6 +177,6 @@ gulp.task('live', function(){
 // -----------------------------------------------------------------------------
 //Default
 // -----------------------------------------------------------------------------
-gulp.task('init',['watch','sass','fonts','fileinclude','browserify','icons']);
+gulp.task('init',['watch','sass','fonts','fileinclude','browserify','icons','create_env']);
 gulp.task('default',['watch']);
 gulp.task('ngrok',['live']);
