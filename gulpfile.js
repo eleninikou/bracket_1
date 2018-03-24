@@ -20,6 +20,7 @@ var gulp            = require("gulp"),
     gutil           = require( 'gulp-util' ),
     ftp             = require( 'vinyl-ftp' ),
     ngrok           = require('ngrok');
+require('dotenv').config()
 
 // -----------------------------------------------------------------------------
 var config = {
@@ -126,9 +127,9 @@ gulp.task('watch', function(){
 gulp.task( 'deploy', function () {
 
   var conn = ftp.create( {
-    host:     '',
-    user:     '',
-    password: '',
+    host:     process.env.FTP_HOST,
+    user:     process.env.FTP_USER,
+    password: process.env.FTP_PASSWORD,
     parallel: 10,
     log:      gutil.log
   } );
@@ -141,8 +142,8 @@ gulp.task( 'deploy', function () {
   // turn off buffering in gulp.src for best performance
 
   return gulp.src( globs, { base: 'dist/', buffer: false } )
-    .pipe( conn.newer( '/public_html/dev/' ) ) // only upload newer files
-    .pipe( conn.dest( '/public_html/dev' ) );
+    .pipe( conn.newer( process.env.FTP_LOCATION ) ) // only upload newer files
+    .pipe( conn.dest( process.env.FTP_LOCATION ) );
 
 } );
 
