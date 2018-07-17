@@ -110,7 +110,6 @@ gulp.task('browserify', function () {
   bundleStream
     .pipe(source('index.js'))
     .pipe(streamify(uglify()))
-    .pipe( lineec() )
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest(config.dest_js))
     .pipe(browserSync.reload({
