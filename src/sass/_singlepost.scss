@@ -1,0 +1,119 @@
+.single_post {
+    width: 100%;
+    &__title {
+        text-transform: capitalize;
+        font-size: 2em;
+        font-family: $post_text_title_font;
+        height: 1.5em;
+        margin-top: 20px;
+    }
+    &__text {
+            font-family: $post_text_font;
+            color: $dark_grey;
+            line-height: 1.8em;
+    }
+    &__img {
+        width: 100%;
+        margin: 20px 0;
+    }
+    &__tags {
+        margin: 20px 0;
+        &__tag {
+            font-size: 0.8em;
+            color: $dark_grey;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-family: $post_text_font;
+            border: 1px solid $post_text;         
+        }
+    }
+    &__author {
+        margin-top: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        div {
+            margin-left: 20px;
+        }
+        &__title {
+            text-transform: capitalize;
+            font-size: 2em;
+            font-family: $post_text_title_font;
+        }
+        &__description {
+            font-family: $post_text_font;
+            color: $dark_grey;
+            line-height: 1.8em; 
+        }    
+    }
+    &__comments {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 100px;
+        &__title {
+            text-transform: capitalize;
+            font-size: 2em;
+            font-family: $post_text_title_font;
+        }
+        &__comment {
+            display: flex;
+            width: 100%;
+            padding: 50px 0;
+            div {
+                margin-left: 20px;
+            }
+            &__img {
+                height: 50px;
+                border-radius: 50%;
+            }
+            &__name {
+                font-size: 1.2em;
+                text-transform: capitalize;
+                font-family: $post_text_title_font;
+            }
+            &__date {
+                color: $post_text;
+                line-height: 2em;
+                font-family: $post_text_font;
+            }
+            &__body {
+                font-family: $post_text_font;
+                color: $dark_grey;
+                line-height: 1.5em;
+            }
+            &__reply {
+                font-family: $post_text_font;
+                background-color: $post_text;
+                text-transform: uppercase;
+                border-radius: 4px;
+                font-size: 0.6em;
+                padding: 4px 10px;
+                margin: 10px 0;
+            }
+        }
+        &__form {
+            width: 100%;
+            background-color: $light-grey;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: $post_text_font;
+            color: $dark-grey;
+            &__label {
+                color: $dark-grey;
+            }
+            &__submit {
+                width: 150px;
+                background-color: $submit_button;
+                padding: 20px 10px;
+                border-radius: 30px;
+                color: $back-drop;
+                border: none;
+                letter-spacing: 1px;
+            }
+
+        }
+    }
+
+}

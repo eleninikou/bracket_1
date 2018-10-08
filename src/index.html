@@ -1,18 +1,172 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Gulp Browserify</title>
-    <link rel="stylesheet" href="assets/css/main.min.css">
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1>HELLO WORLD!</h1>
+
+<head>
+  <meta charset="utf-8">
+  <title>Wordpress blog</title>
+  <link rel="stylesheet" href="assets/css/main.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="page row">
+      <!-- fixed -->
+      <div class="backdrop__container col-md-6">
+        <!-- relative -->
+        <div class="backdrop__nav">
+          <!-- absolute -->
+          <div class="backdrop__nav__topmenu">
+            <h1 class="backdrop__nav__topmenu__name">Libro</h1>
+            <i class="fas fa-bars backdrop__nav__topmenu__hamburger"></i>
+          </div>
+          <div class="owl-carousel owl-theme">
+
+            <!-- item -->
+            <div class="backdrop__nav__img">
+              <div class="backdrop__nav__bottom">
+                <div class="backdrop__nav__bottom__label">
+                  <p>model</p>
+                </div>
+                <h1 class="backdrop__nav__bottom__title">Title Title Title Title Title</h1>
+              </div>
+            </div>
+            
+            <!-- item -->
+            <div class="backdrop__nav__img">
+                <div class="backdrop__nav__bottom">
+                  <div class="backdrop__nav__bottom__label">
+                    <p>model</p>
+                  </div>
+                  <h1 class="backdrop__nav__bottom__title">Title Title Title Title Title</h1>
+                </div>
+              </div>
+
+          </div>
+          <!-- Menu -->
+          <div class="navigation_menu">
+            <i class="fas fa-times navigation_menu__close"></i>
+            <ul class="navigation_menu__list">
+              <li>
+                <a href="">Home</a>
+              </li>
+              <li>
+                <a href="">Fashion</a>
+              </li>
+              <li>
+                <a href="">Model</a>
+              </li>
+              <li>
+                <a href="">Travel</a>
+              </li>
+              <li>
+                <a href="">About us</a>
+              </li>
+              <li>
+                <a href="">Contact</a>
+              </li>
+              <p>Copyright &copy; 2018 All rights reserved</p>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- Posts and pagination -->
+      <div class="home_page__posts col-md-6">
+        <div class="home_page__posts__container row">
+            <div class="home_page__posts__column col-md-6">
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/600/750=5">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae veritatis doloremque consectetur et officia velit sapiente, inventore odio natus quas magnam
+                  dignissimos?
+                </p>
+              </div>
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/600/350=6">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae veritatis doloremque consectetur et officia velit sapiente, inventore odio natus quas magnam
+                  dignissimos?
+                </p>
+              </div>
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/600/900=7">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae veritatis doloremque consectetur et officia velit sapiente, inventore odio natus quas magnam
+                  dignissimos?
+                </p>
+              </div>
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/600/900=11">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae veritatis doloremque consectetur et officia velit sapiente, inventore odio natus quas magnam
+                  dignissimos?
+                </p>
+              </div>
+            </div>
+            <div class="home_page__posts__column col-md-6">
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/400/500=4">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae inventore odio natus quas magnam dignissimos?</p>
+              </div>
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/400/500=8">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae inventore odio natus quas magnam dignissimos?</p>
+              </div>
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/400/300=9">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae inventore odio natus quas magnam dignissimos?</p>
+              </div>
+              <div class="home_page__posts__column__post">
+                <img class="home_page__posts__column__post__img" src="https://picsum.photos/400/700=10">
+                <h3 class="home_page__posts__column__post__date">Date, Year, Author</h3>
+                <h1 class="home_page__posts__column__post__title">Title</h1>
+                <p class="home_page__posts__column__post__text"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta quae vero provident aliquam aperiam ducimus
+                  amet vitae inventore odio natus quas magnam dignissimos?</p>
+              </div>
+            </div>
+          </div>
+        <div class="pagination">
+          <div class="pagination__links">
+            <a href="">
+              <i class="fas fa-angle-left"></i>
+            </a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href="">
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="assets/js/bundle.js"></script>
-  </body>
+    </div>
+
+  <script type="text/javascript" src="assets/js/bundle.js"></script>
+</body>
+
 </html>
